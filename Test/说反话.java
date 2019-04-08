@@ -50,5 +50,8 @@ public class Main{
 }
 
 
-方法空格替换方法：
-1.
+去掉方法空格方法：
+1.String.trim():去掉首位空格
+2.String.replace(" ",""):去掉所有空格，包括首尾，中间的
+3.String.replaceAll(" +",""):去掉所有空格
+4.String.split("\\s+"):去掉连续多个空格
