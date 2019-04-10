@@ -27,21 +27,26 @@ import java.util.Scanner;
 public class Main{
     public static void main(String[] args){
         Scanner in = new Scanner(System.in);
-        String p=in.next();
+        String p=in.next();//next()方法读到空格停止，nextLine()读到换行停止
         String a=in.next();
-        String[] pMoney=p.split("\\.");
+        String[] pMoney=p.split("\\.");//利用split()方法将他拆分成String[]数组
         String[] aMoney=a.split("\\.");
+		//计算对应的值，第一位*17*29+第二位*29+第三位
         int pTotal=Integer.valueOf(pMoney[0])*17*29+Integer.valueOf(pMoney[1])*29+Integer.valueOf(pMoney[2]);
         int aTotal=Integer.valueOf(aMoney[0])*17*29+Integer.valueOf(aMoney[1])*29+Integer.valueOf(aMoney[2]);
         int key=1;
+		//计算差值
         int value=aTotal-pTotal;
+		//如果计算结果为负数，把value置为负数
         if(value<0){
             value=-value;
             key=-key;
         }
+		//计算对应位数的值
         int p1=value/(17*29);
         int p2=(value-p1*17*29)/29;
         int p3=value-p1*29*17-p2*29;
+		//结果的正负数
         p1*=key;
         System.out.println(p1+"."+p2+"."+p3);
 
