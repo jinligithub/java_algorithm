@@ -40,7 +40,6 @@ public class Solution {
         return slow;//此时慢指针指向k个节点，返回慢指针
     }
 }
- 
 
 方法二：利用一个循环解决问题，在这个循环里面判断k<n，k>n的情况，并且找到第k个节点，如果找不到，返回null
 
