@@ -4,6 +4,9 @@
 求最后一个被删掉的数的原始下标位置。以8个数(N=7)为例:｛0，1，2，3，4，5，6，7｝，
 0->1->2(删除)->3->4->5(删除)->6->7->0(删除),如此循环直到最后一个数被删除。
 
+
+
+
 import java.util.Scanner;
 public class Main{
     public static void main(String[] args){
