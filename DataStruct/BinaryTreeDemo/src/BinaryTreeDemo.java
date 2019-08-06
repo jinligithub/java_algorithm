@@ -23,6 +23,15 @@ public class BinaryTreeDemo {
         System.out.println("后序遍历");
         binaryTree.postOrder();
 
+        System.out.println("qianxu ");
+        Node re=binaryTree.preOrderSearch(3);
+        if(re!=null){
+            System.out.printf("找到了 no=%d  name =%s",re.getNo(),re.getName());
+        }else {
+            System.out.println("没有找到");
+        }
+
+
 
 
     }
@@ -123,9 +132,79 @@ class Node{
         //输出节点
         System.out.println(this);
     }
+
+
+    //前序查找
+    public Node preOrderSearch(int no){
+        //比较当节点是否为要查找的节点: 是就直接返回
+        if(this.no==no){
+            return this;
+        }
+        //1.判断当前节点的左子节点是否为null,不为空递归前序查找
+        //2.如果左递归查找，找到该节点就返回
+        Node resNode=null;
+        if(this.left!=null){
+            resNode=this.left.preOrderSearch(no);
+        }
+        if(resNode!=null){//说明 左子树找到了
+            return resNode;
+        }
+        //3.。没有找到，就判断当前接地点的右子树节点是否为null，如果不是就子昂有进行前序查找
+        if(this.right!=null){
+            resNode=this.right.preOrderSearch(no);
+        }
+        return resNode;
+    }
+
+    //中序查找
+    public  Node midOrderSearch(int no){
+         //判断当前节点的左子树是否为null
+        Node resNode=null;
+        if(this.left!=null){
+            resNode=this.left.midOrderSearch(no);
+        }
+        //如果找到了就返回，
+        if(resNode!=null){
+            return resNode;
+        }
+        //左子树没有找到就和当前节点进行比较，是当前节点就返回
+        if(this.no==no){
+            return this;
+        }
+        //否则继续进行右递归的中序查找
+        if(this.right!=null){
+            resNode=this.right.midOrderSearch(no);
+        }
+        return resNode;
+    }
+    //后续查找
+    public Node postOrderSearch(int no){
+        //判断当前节点的左子节点是否为null,如果不为null，则进行有序查找
+         Node resNode=null;
+         if(this.left!=null){
+             resNode=this.left.postOrderSearch(no);
+         }
+         if(resNode!=null) {//说明找到了
+             return resNode;
+         }
+         //如果左子树没有找到，则向右子树进行前序中昂徐后续的遍历查找
+        if(this.right!=null){
+            resNode =this.right.postOrderSearch(no);
+        }
+        if(resNode!=null){
+            return resNode;
+        }
+        //如果左右子树都没有找到，就比较当前节点是不是要查找的节点
+        if(this.no==no){
+            return this;
+        }
+        return resNode;
+
+    }
+
 }
 
-//穿件一个二叉树
+//创建一个二叉树
 class BinaryTree{
     private Node root;//根节点
 
@@ -161,6 +240,32 @@ class BinaryTree{
             System.out.println("BIanryTree is empty");
         }
 
+    }
+
+    //前序查找
+    public Node preOrderSearch(int no){
+        if(root!=null){
+            return root.preOrderSearch(no);
+        }else {
+            System.out.println("BinaryTree is empty");
+            return null;
+        }
+    }  //中序查找
+    public Node midOrderSearch(int no){
+        if(root!=null){
+            return root.midOrderSearch(no);
+        }else {
+            System.out.println("BinaryTree is empty");
+            return null;
+        }
+    }  //后序查找
+    public Node postOrderSearch(int no){
+        if(root!=null){
+            return root.postOrderSearch(no);
+        }else {
+            System.out.println("BinaryTree is empty");
+            return null;
+        }
     }
 
 
